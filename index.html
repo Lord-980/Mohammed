@@ -3,104 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mohammed & Laila Wedding</title>
+  <title>Mohammed & Laila</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: Georgia, 'Times New Roman', serif;
-      background: #080504;
-      color: #fff;
+      background: #050505;
+      color: white;
       overflow-x: hidden;
-    }
-
-    .cover {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle, #3a2217, #070403 70%);
-      padding: 28px;
-      text-align: center;
-    }
-
-    .envelope {
-      width: min(92vw, 520px);
-      height: 330px;
-      background: linear-gradient(145deg, #efe2c3, #c8aa76);
-      border-radius: 18px;
-      position: relative;
-      box-shadow: 0 30px 80px rgba(0,0,0,.6);
-      cursor: pointer;
-      transition: 1s ease;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.35);
-    }
-
-    .envelope::before, .envelope::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, transparent 49%, rgba(90,55,25,.28) 50%, transparent 51%);
-    }
-    .envelope::after {
-      background: linear-gradient(225deg, transparent 49%, rgba(90,55,25,.25) 50%, transparent 51%);
-    }
-
-    .seal {
-      position: absolute;
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 25%, #d64b3b, #7d0f0f 72%);
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 5;
-      box-shadow: 0 12px 25px rgba(0,0,0,.45), inset 0 4px 10px rgba(255,255,255,.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 34px;
-      color: #f6d9a8;
-    }
-
-    .tap {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 28px;
-      z-index: 6;
-      color: #4b2b14;
-      font-size: 18px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .cover.open .envelope {
-      transform: scale(.92) translateY(-40px);
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .invite {
-      display: none;
-      animation: fadeUp 1.3s ease forwards;
-    }
-    .cover.open .invite { display: block; }
-
-    .invite h1 {
-      font-size: clamp(54px, 10vw, 110px);
-      font-weight: 400;
-      line-height: .95;
-      color: #f8e6bd;
-      text-shadow: 0 12px 40px rgba(0,0,0,.65);
-    }
-    .invite p {
-      margin-top: 22px;
-      font-size: 22px;
-      color: #d9c28f;
-      letter-spacing: 3px;
+      font-family: 'Montserrat', sans-serif;
     }
 
     section {
@@ -109,125 +32,281 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 80px 24px;
-      background: linear-gradient(180deg, #080504, #160d0a);
-      border-top: 1px solid rgba(212,175,55,.18);
+      padding: 120px 30px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.8)),
+        url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=80') center/cover fixed;
     }
 
-    .box {
-      max-width: 850px;
-      padding: 45px 28px;
-      border: 1px solid rgba(212,175,55,.35);
-      border-radius: 30px;
-      background: rgba(255,255,255,.045);
-      box-shadow: 0 25px 70px rgba(0,0,0,.35);
+    section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(212,175,55,.12), transparent 60%);
+      pointer-events: none;
     }
 
-    .label {
-      color: #d4af37;
-      letter-spacing: 6px;
+    .hero {
+      background:
+        linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.75)),
+        url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1800&q=80') center/cover fixed;
+    }
+
+    .envelope-container {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+      transition: 1.2s ease;
+    }
+
+    .envelope {
+      width: 400px;
+      height: 260px;
+      background: linear-gradient(145deg, #f3e4c7, #b98b52);
+      border-radius: 14px;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      box-shadow: 0 30px 70px rgba(0,0,0,.6);
+      transition: 1s ease;
+      border: 1px solid rgba(255,255,255,.15);
+    }
+
+    .flap {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, #e8d0aa, #9f6e39);
+      clip-path: polygon(0 0, 50% 52%, 100% 0);
+      transform-origin: top;
+      transition: 1s ease;
+      z-index: 3;
+    }
+
+    .seal {
+      position: absolute;
+      width: 85px;
+      height: 85px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #d84b3b, #690d0d);
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      color: #f6ddb0;
+      font-family: 'Cormorant Garamond', serif;
+      box-shadow: 0 10px 25px rgba(0,0,0,.4);
+    }
+
+    .tap {
+      margin-top: 28px;
+      letter-spacing: 5px;
+      font-size: 12px;
       text-transform: uppercase;
+      color: #d4af37;
+    }
+
+    .opened .flap {
+      transform: rotateX(180deg);
+    }
+
+    .opened .envelope {
+      transform: translateY(-130px);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .intro {
+      position: absolute;
+      text-align: center;
+      opacity: 0;
+      transition: 1.5s ease;
+      z-index: 2;
+    }
+
+    .opened .intro {
+      opacity: 1;
+    }
+
+    .intro p {
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      color: #d4af37;
       margin-bottom: 20px;
       font-size: 14px;
     }
 
-    h2 {
-      font-size: clamp(38px, 7vw, 76px);
+    .intro h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(75px, 11vw, 150px);
+      line-height: .9;
       font-weight: 400;
-      color: #f8e6bd;
-      margin-bottom: 22px;
+      color: #f6e7c4;
+      text-shadow: 0 20px 60px rgba(0,0,0,.6);
+    }
+
+    .scroll {
+      position: absolute;
+      bottom: 35px;
+      left: 50%;
+      transform: translateX(-50%);
+      letter-spacing: 5px;
+      font-size: 12px;
+      color: rgba(255,255,255,.7);
+      opacity: 0;
+      transition: 1s ease;
+    }
+
+    .opened .scroll {
+      opacity: 1;
+    }
+
+    .content {
+      max-width: 950px;
+      position: relative;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(80px);
+      transition: all 1.3s ease;
+    }
+
+    .content.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .small {
+      color: #d4af37;
+      letter-spacing: 7px;
+      text-transform: uppercase;
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(60px, 9vw, 110px);
+      font-weight: 400;
+      color: #f6e7c4;
+      margin-bottom: 30px;
     }
 
     .text {
-      font-size: clamp(20px, 3vw, 30px);
-      line-height: 1.8;
-      color: #eee0c4;
+      font-size: clamp(20px, 2vw, 30px);
+      line-height: 2;
+      color: rgba(255,255,255,.82);
+      font-weight: 300;
     }
 
-    .gold { color: #d4af37; }
-
-    .btn {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 34px;
-      border: 1px solid #d4af37;
-      border-radius: 40px;
-      color: #fff;
-      text-decoration: none;
-      letter-spacing: 2px;
-      background: rgba(212,175,55,.12);
+    .location {
+      margin-top: 25px;
+      color: #d4af37;
+      font-size: clamp(30px, 4vw, 55px);
+      font-family: 'Cormorant Garamond', serif;
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(35px); }
-      to { opacity: 1; transform: translateY(0); }
+    @media(max-width: 600px) {
+      .envelope {
+        width: 310px;
+        height: 210px;
+      }
     }
   </style>
 </head>
 <body>
-  <audio id="music" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=romantic-piano-110843.mp3" type="audio/mpeg">
-  </audio>
 
-  <div class="cover" id="cover">
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=romantic-piano-110843.mp3" type="audio/mpeg">
+</audio>
+
+<section class="hero" id="hero">
+
+  <div class="envelope-container" id="inviteBox">
+
     <div class="envelope" onclick="openInvite()">
+      <div class="flap"></div>
       <div class="seal">M</div>
-      <div class="tap">Tap to Open</div>
     </div>
-    <div class="invite">
-      <p>The Wedding Invitation</p>
-      <h1>Mohammed<br>& Laila</h1>
-      <a class="btn" href="#welcome">Enter</a>
-    </div>
+
+    <div class="tap">Tap To Open Invitation</div>
+
   </div>
 
-  <section id="welcome">
-    <div class="box">
-      <div class="label">You Are Invited</div>
-      <h2>دعوة حب</h2>
-      <p class="text">بكل الحب والفرحة، يشرفنا حضوركم ومشاركتكم أجمل لحظات العمر في حفل زفافنا.</p>
-    </div>
-  </section>
+  <div class="intro">
+    <p>The Wedding Of</p>
+    <h1>Mohammed<br>& Laila</h1>
+  </div>
 
-  <section>
-    <div class="box">
-      <div class="label">Bride & Groom</div>
-      <h2>Mohammed & Laila</h2>
-      <p class="text">نبدأ معًا حكاية جديدة، ووجودكم معنا يجعل الفرحة أجمل وأكمل.</p>
-    </div>
-  </section>
+  <div class="scroll">SCROLL DOWN</div>
 
-  <section>
-    <div class="box">
-      <div class="label">Date</div>
-      <h2>12 August 2026</h2>
-      <p class="text">ننتظركم في ليلة مميزة مليئة بالحب، الموسيقى، والذكريات الجميلة.</p>
-    </div>
-  </section>
+</section>
 
-  <section>
-    <div class="box">
-      <div class="label">Location</div>
-      <h2>قاعة فلوري</h2>
-      <p class="text">المعادي<br><span class="gold">Flory Hall - Maadi</span></p>
-    </div>
-  </section>
+<section>
+  <div class="content">
+    <div class="small">Our Story</div>
+    <h2>A Night To Remember</h2>
+    <p class="text">
+      With joyful hearts and endless love, we invite you to celebrate the beginning of our forever together.
+    </p>
+  </div>
+</section>
 
-  <section>
-    <div class="box">
-      <div class="label">Our Message</div>
-      <h2>وجودكم يسعدنا</h2>
-      <p class="text">أنتم مدعوون لمشاركتنا بداية العمر، وفرحتنا لا تكتمل إلا بوجودكم معنا.</p>
-    </div>
-  </section>
+<section>
+  <div class="content">
+    <div class="small">Wedding Date</div>
+    <h2>12 August 2026</h2>
+    <p class="text">
+      Join us for an unforgettable evening filled with elegance, music, love, and beautiful memories.
+    </p>
+  </div>
+</section>
 
-  <script>
-    function openInvite() {
-      document.getElementById('cover').classList.add('open');
-      const music = document.getElementById('music');
-      music.volume = 0.25;
-      music.play().catch(() => {});
+<section>
+  <div class="content">
+    <div class="small">Venue</div>
+    <h2>Flory Hall</h2>
+    <div class="location">Maadi, Cairo</div>
+  </div>
+</section>
+
+<section>
+  <div class="content">
+    <div class="small">Special Message</div>
+    <h2>You Are Invited</h2>
+    <p class="text">
+      Your presence will make our celebration even more meaningful. We would be honored to share this magical moment with you.
+    </p>
+  </div>
+</section>
+
+<script>
+  function openInvite() {
+    document.body.classList.add('opened');
+    document.getElementById('hero').classList.add('opened');
+
+    const music = document.getElementById('music');
+    music.volume = 0.25;
+    music.play().catch(() => {});
+  }
+
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
     }
-  </script>
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.content').forEach(el => {
+  observer.observe(el);
+});
+</script>
+
 </body>
 </html>
