@@ -6,152 +6,228 @@
   <title>Mohammed & Laila Wedding</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: Georgia, 'Times New Roman', serif;
+      background: #080504;
       color: #fff;
-      min-height: 100vh;
-      background: #050505;
       overflow-x: hidden;
     }
-    .hero {
+
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle, #3a2217, #070403 70%);
+      padding: 28px;
+      text-align: center;
+    }
+
+    .envelope {
+      width: min(92vw, 520px);
+      height: 330px;
+      background: linear-gradient(145deg, #efe2c3, #c8aa76);
+      border-radius: 18px;
+      position: relative;
+      box-shadow: 0 30px 80px rgba(0,0,0,.6);
+      cursor: pointer;
+      transition: 1s ease;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.35);
+    }
+
+    .envelope::before, .envelope::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 49%, rgba(90,55,25,.28) 50%, transparent 51%);
+    }
+    .envelope::after {
+      background: linear-gradient(225deg, transparent 49%, rgba(90,55,25,.25) 50%, transparent 51%);
+    }
+
+    .seal {
+      position: absolute;
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 25%, #d64b3b, #7d0f0f 72%);
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 5;
+      box-shadow: 0 12px 25px rgba(0,0,0,.45), inset 0 4px 10px rgba(255,255,255,.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      color: #f6d9a8;
+    }
+
+    .tap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 28px;
+      z-index: 6;
+      color: #4b2b14;
+      font-size: 18px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .cover.open .envelope {
+      transform: scale(.92) translateY(-40px);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .invite {
+      display: none;
+      animation: fadeUp 1.3s ease forwards;
+    }
+    .cover.open .invite { display: block; }
+
+    .invite h1 {
+      font-size: clamp(54px, 10vw, 110px);
+      font-weight: 400;
+      line-height: .95;
+      color: #f8e6bd;
+      text-shadow: 0 12px 40px rgba(0,0,0,.65);
+    }
+    .invite p {
+      margin-top: 22px;
+      font-size: 22px;
+      color: #d9c28f;
+      letter-spacing: 3px;
+    }
+
+    section {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 24px;
-      background:
-        linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.75)),
-        url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80') center/cover;
-      position: relative;
+      padding: 80px 24px;
+      background: linear-gradient(180deg, #080504, #160d0a);
+      border-top: 1px solid rgba(212,175,55,.18);
     }
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle, rgba(212,175,55,.18), transparent 55%);
-      animation: glow 5s ease-in-out infinite alternate;
-    }
-    .content {
-      position: relative;
+
+    .box {
       max-width: 850px;
-      animation: fadeUp 1.8s ease forwards;
+      padding: 45px 28px;
+      border: 1px solid rgba(212,175,55,.35);
+      border-radius: 30px;
+      background: rgba(255,255,255,.045);
+      box-shadow: 0 25px 70px rgba(0,0,0,.35);
     }
+
     .label {
-      letter-spacing: 6px;
-      font-size: 14px;
       color: #d4af37;
+      letter-spacing: 6px;
       text-transform: uppercase;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
+      font-size: 14px;
     }
-    h1 {
-      font-size: clamp(48px, 9vw, 110px);
+
+    h2 {
+      font-size: clamp(38px, 7vw, 76px);
       font-weight: 400;
-      line-height: 1;
-      margin-bottom: 24px;
-      text-shadow: 0 10px 40px rgba(0,0,0,.7);
+      color: #f8e6bd;
+      margin-bottom: 22px;
     }
-    .date {
-      font-size: clamp(22px, 4vw, 42px);
-      color: #f5e6b8;
-      margin-bottom: 28px;
-    }
-    .divider {
-      width: 160px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #d4af37, transparent);
-      margin: 0 auto 28px;
-    }
+
     .text {
-      font-size: 20px;
+      font-size: clamp(20px, 3vw, 30px);
       line-height: 1.8;
-      color: #eee;
-      margin-bottom: 36px;
+      color: #eee0c4;
     }
+
+    .gold { color: #d4af37; }
+
     .btn {
       display: inline-block;
+      margin-top: 30px;
       padding: 15px 34px;
       border: 1px solid #d4af37;
+      border-radius: 40px;
       color: #fff;
       text-decoration: none;
       letter-spacing: 2px;
-      text-transform: uppercase;
-      border-radius: 40px;
       background: rgba(212,175,55,.12);
-      transition: .3s;
     }
-    .btn:hover {
-      background: #d4af37;
-      color: #111;
-      transform: translateY(-3px);
-    }
-    .section {
-      padding: 90px 24px;
-      text-align: center;
-      background: linear-gradient(180deg, #050505, #111);
-    }
-    .section h2 {
-      font-size: 42px;
-      color: #d4af37;
-      margin-bottom: 20px;
-      font-weight: 400;
-    }
-    .cards {
-      max-width: 1000px;
-      margin: 45px auto 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 22px;
-    }
-    .card {
-      padding: 34px 24px;
-      border: 1px solid rgba(212,175,55,.25);
-      background: rgba(255,255,255,.04);
-      border-radius: 24px;
-      box-shadow: 0 20px 50px rgba(0,0,0,.35);
-    }
-    .card h3 { color: #f5e6b8; margin-bottom: 14px; font-size: 25px; }
-    .card p { color: #ccc; line-height: 1.7; }
+
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(40px); }
+      from { opacity: 0; transform: translateY(35px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes glow {
-      from { opacity: .5; }
-      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <section class="hero">
-    <div class="content">
-      <div class="label">The Wedding Of</div>
+  <audio id="music" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=romantic-piano-110843.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="cover" id="cover">
+    <div class="envelope" onclick="openInvite()">
+      <div class="seal">M</div>
+      <div class="tap">Tap to Open</div>
+    </div>
+    <div class="invite">
+      <p>The Wedding Invitation</p>
       <h1>Mohammed<br>& Laila</h1>
-      <div class="divider"></div>
-      <div class="date">12 August 2026</div>
-      <p class="text">Together with their families, Mohammed and Laila invite you to celebrate a night of love, elegance, and timeless memories.</p>
-      <a href="#details" class="btn">View Details</a>
+      <a class="btn" href="#welcome">Enter</a>
+    </div>
+  </div>
+
+  <section id="welcome">
+    <div class="box">
+      <div class="label">You Are Invited</div>
+      <h2>دعوة حب</h2>
+      <p class="text">بكل الحب والفرحة، يشرفنا حضوركم ومشاركتكم أجمل لحظات العمر في حفل زفافنا.</p>
     </div>
   </section>
 
-  <section class="section" id="details">
-    <h2>Wedding Details</h2>
-    <p class="text">A luxury cinematic wedding invitation website inspired by elegant motion videos.</p>
-    <div class="cards">
-      <div class="card">
-        <h3>Date</h3>
-        <p>12 August 2026</p>
-      </div>
-      <div class="card">
-        <h3>Time</h3>
-        <p>8:00 PM</p>
-      </div>
-      <div class="card">
-        <h3>Location</h3>
-        <p>Wedding Hall Name<br>Doha, Qatar</p>
-      </div>
+  <section>
+    <div class="box">
+      <div class="label">Bride & Groom</div>
+      <h2>Mohammed & Laila</h2>
+      <p class="text">نبدأ معًا حكاية جديدة، ووجودكم معنا يجعل الفرحة أجمل وأكمل.</p>
     </div>
   </section>
+
+  <section>
+    <div class="box">
+      <div class="label">Date</div>
+      <h2>12 August 2026</h2>
+      <p class="text">ننتظركم في ليلة مميزة مليئة بالحب، الموسيقى، والذكريات الجميلة.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="box">
+      <div class="label">Location</div>
+      <h2>قاعة فلوري</h2>
+      <p class="text">المعادي<br><span class="gold">Flory Hall - Maadi</span></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="box">
+      <div class="label">Our Message</div>
+      <h2>وجودكم يسعدنا</h2>
+      <p class="text">أنتم مدعوون لمشاركتنا بداية العمر، وفرحتنا لا تكتمل إلا بوجودكم معنا.</p>
+    </div>
+  </section>
+
+  <script>
+    function openInvite() {
+      document.getElementById('cover').classList.add('open');
+      const music = document.getElementById('music');
+      music.volume = 0.25;
+      music.play().catch(() => {});
+    }
+  </script>
 </body>
 </html>
-          
