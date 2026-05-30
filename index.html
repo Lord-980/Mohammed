@@ -35,14 +35,17 @@
     }
 
     .gate-cover{
-      position:absolute;
-      inset:0;
-      background:url('gate.png') top center/auto 100% no-repeat;
-      background-color:#120d09;
-      z-index:20;
-      cursor:pointer;
-      transition:opacity 1.25s ease, transform 1.6s ease, filter 1.25s ease;
-    }
+  position:absolute;
+  inset:0;
+  background-image:url('gate.png');
+  background-repeat:no-repeat;
+  background-position:top center;
+  background-size:contain;
+  background-color:#120d09;
+  z-index:20;
+  cursor:pointer;
+  transition:opacity 1.25s ease, transform 1.6s ease, filter 1.25s ease;
+}
 
     .gate-cover::after{
       content:'Tap to Enter';
