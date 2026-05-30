@@ -35,35 +35,16 @@
     }
 
     .gate-cover{
-  position:absolute;
-  inset:0;
-  background-image:url('gate.png');
-  background-repeat:no-repeat;
-  background-position:top center;
-  background-size:contain;
-  background-color:#120d09;
-  z-index:20;
-  cursor:pointer;
-  transition:opacity 1.25s ease, transform 1.6s ease, filter 1.25s ease;
-}
-
-    .gate-cover::after{
-      content:'Tap to Enter';
       position:absolute;
-      left:50%;
-      bottom:7%;
-      transform:translateX(-50%);
-      padding:13px 30px;
-      border:1px solid rgba(255,255,255,.65);
-      border-radius:999px;
-      color:#fff2cf;
-      background:rgba(50,34,18,.34);
-      backdrop-filter:blur(10px);
-      font-size:12px;
-      letter-spacing:4px;
-      text-transform:uppercase;
-      box-shadow:0 18px 50px rgba(0,0,0,.25);
+      inset:0;
+      background:url('gate.png') top center/auto 100% no-repeat;
+      background-color:#120d09;
+      z-index:20;
+      cursor:pointer;
+      transition:opacity 1.25s ease, transform 1.6s ease, filter 1.25s ease;
     }
+
+    /* Removed extra Tap to Enter button because the image already includes it */
 
     .hero.opened .gate-cover{
       opacity:0;
@@ -159,13 +140,13 @@
       position:relative;
       overflow:hidden;
       background:
-        linear-gradient(135deg,rgba(255,250,242,.95),rgba(235,213,180,.92)),
+        linear-gradient(135deg,rgba(238,222,195,.92),rgba(201,169,122,.88)),
         url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=80') center/cover fixed;
     }
 
     .section.dark{
       background:
-        linear-gradient(135deg,rgba(35,24,16,.88),rgba(80,55,31,.82)),
+        linear-gradient(135deg,rgba(42,29,19,.90),rgba(93,67,39,.86)),
         url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1800&q=80') center/cover fixed;
       color:#fff3df;
     }
@@ -187,9 +168,9 @@
       text-align:center;
       padding:clamp(34px,6vw,70px);
       border-radius:34px;
-      background:rgba(255,250,242,.72);
+      background:rgba(255,245,229,.62);
       border:1px solid rgba(184,137,67,.28);
-      box-shadow:0 30px 90px rgba(60,40,20,.18);
+      box-shadow:0 30px 90px rgba(60,40,20,.26);
       backdrop-filter:blur(16px);
       opacity:0;
       transform:translateY(70px) scale(.97);
@@ -254,8 +235,9 @@
     .date-card{
       padding:24px 12px;
       border-radius:24px;
-      background:rgba(255,255,255,.48);
-      border:1px solid rgba(184,137,67,.22);
+      background:rgba(255,244,226,.62);
+      border:1px solid rgba(140,100,46,.28);
+      box-shadow:0 18px 45px rgba(55,34,14,.16);
     }
     .date-card strong{
       font-family:'Playfair Display',serif;
