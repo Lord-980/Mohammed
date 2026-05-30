@@ -3,420 +3,377 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>M & L Wedding Invitation</title>
+  <title>Mohammed & Laila Wedding</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Montserrat:wght@300;400;500;600&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: #fff7ea;
-      color: #5a3d1f;
-      overflow-x: hidden;
+    :root{
+      --cream:#f7efe3;
+      --champagne:#e9d5b5;
+      --gold:#b88943;
+      --gold-dark:#8a642e;
+      --brown:#3b2a1d;
+      --soft:#fffaf2;
     }
 
-    .hero {
-      min-height: 100vh;
-      position: relative;
-      overflow: hidden;
-      background: #f7e7cb;
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      font-family:'Montserrat',sans-serif;
+      background:#120d09;
+      color:var(--brown);
+      overflow-x:hidden;
     }
 
-    .gate-cover {
-      position: absolute;
-      inset: 0;
-      background: url('gate.png') center/cover no-repeat;
-      cursor: pointer;
-      z-index: 10;
-      transition: opacity 1.4s ease, transform 1.8s ease, filter 1.4s ease;
+    .hero{
+      min-height:100vh;
+      position:relative;
+      overflow:hidden;
+      background:#120d09;
     }
 
-    .gate-cover::after {
-      content: "Tap to Enter";
-      position: absolute;
-      left: 50%;
-      bottom: 7%;
-      transform: translateX(-50%);
-      padding: 13px 28px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.65);
-      background: rgba(255, 245, 224, .28);
-      backdrop-filter: blur(8px);
-      color: #fff4d2;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      font-size: 12px;
-      box-shadow: 0 18px 45px rgba(117,76,25,.28);
+    .gate-cover{
+      position:absolute;
+      inset:0;
+      background:url('gate.png') center/cover no-repeat;
+      z-index:20;
+      cursor:pointer;
+      transition:opacity 1.25s ease, transform 1.6s ease, filter 1.25s ease;
     }
 
-    .hero.opened .gate-cover {
-      opacity: 0;
-      transform: scale(1.12);
-      filter: blur(9px);
-      pointer-events: none;
+    .gate-cover::after{
+      content:'Tap to Enter';
+      position:absolute;
+      left:50%;
+      bottom:7%;
+      transform:translateX(-50%);
+      padding:13px 30px;
+      border:1px solid rgba(255,255,255,.65);
+      border-radius:999px;
+      color:#fff2cf;
+      background:rgba(50,34,18,.34);
+      backdrop-filter:blur(10px);
+      font-size:12px;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      box-shadow:0 18px 50px rgba(0,0,0,.25);
     }
 
-    .hero-content {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 42px 24px;
+    .hero.opened .gate-cover{
+      opacity:0;
+      transform:scale(1.08);
+      filter:blur(8px);
+      pointer-events:none;
+    }
+
+    .hero-inner{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:40px 22px;
+      position:relative;
       background:
-        linear-gradient(rgba(255,249,238,.70), rgba(255,243,222,.90)),
-        url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1600&q=80') center/cover;
-      position: relative;
+        linear-gradient(rgba(30,20,12,.38),rgba(30,20,12,.62)),
+        url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1800&q=80') center/cover;
     }
 
-    .hero-content::before {
-      content: "";
-      position: absolute;
-      inset: 0;
+    .hero-inner::before{
+      content:'';
+      position:absolute;
+      inset:0;
       background:
-        radial-gradient(circle at 50% 22%, rgba(255,255,255,.9), transparent 30%),
-        radial-gradient(circle at 50% 70%, rgba(190,143,62,.16), transparent 45%);
+        radial-gradient(circle at 50% 35%,rgba(255,237,197,.55),transparent 32%),
+        radial-gradient(circle at 50% 80%,rgba(184,137,67,.28),transparent 42%);
     }
 
-    .intro {
-      position: relative;
-      z-index: 2;
-      opacity: 0;
-      transform: translateY(40px) scale(.96);
-      filter: blur(10px);
-      transition: 1.4s ease .45s;
-      max-width: 920px;
+    .intro{
+      position:relative;
+      z-index:2;
+      opacity:0;
+      transform:translateY(34px);
+      filter:blur(10px);
+      transition:1.25s ease .4s;
+      max-width:850px;
     }
 
-    .hero.opened .intro {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      filter: blur(0);
+    .hero.opened .intro{opacity:1;transform:translateY(0);filter:blur(0)}
+
+    .kicker{
+      color:#d8b36d;
+      font-size:12px;
+      letter-spacing:7px;
+      text-transform:uppercase;
+      margin-bottom:24px;
+      font-weight:500;
     }
 
-    .eyebrow, .label {
-      color: #b8842f;
-      letter-spacing: 7px;
-      text-transform: uppercase;
-      font-size: 12px;
-      margin-bottom: 22px;
-      font-weight: 500;
+    .names{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(62px,13vw,135px);
+      font-weight:500;
+      line-height:.9;
+      color:#fff3d5;
+      text-shadow:0 25px 80px rgba(0,0,0,.5);
+      letter-spacing:-2px;
     }
 
-    .monogram {
-      font-family: 'Allura', cursive;
-      font-size: clamp(125px, 28vw, 245px);
-      line-height: .65;
-      color: #a87528;
-      text-shadow: 0 18px 55px rgba(168,117,40,.24);
-      margin: 8px 0 32px;
-      letter-spacing: 2px;
+    .names span{
+      display:block;
+      font-size:.72em;
+      color:#d6ad62;
+      font-weight:400;
+      margin:8px 0;
     }
 
-    .monogram span {
-      display: block;
+    .hero-text{
+      max-width:620px;
+      margin:28px auto 0;
+      color:rgba(255,246,225,.88);
+      font-size:clamp(17px,2.5vw,23px);
+      line-height:1.9;
+      font-weight:300;
     }
 
-    .monogram .m { margin-bottom: -18px; }
-    .monogram .l { margin-top: -18px; }
-
-    h1, h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      color: #8a5f24;
+    .arabic-line{
+      font-family:'Noto Naskh Arabic',serif;
+      direction:rtl;
+      margin-top:16px;
+      color:#e8c98b;
+      font-size:clamp(18px,2.4vw,24px);
     }
 
-    h1 {
-      font-size: clamp(48px, 9vw, 96px);
-      line-height: 1;
-      margin-bottom: 18px;
-    }
-
-    h2 {
-      font-size: clamp(54px, 10vw, 108px);
-      line-height: 1;
-      margin-bottom: 28px;
-    }
-
-    .intro-note {
-      margin: 20px auto 0;
-      max-width: 680px;
-      font-size: clamp(18px, 2.7vw, 25px);
-      line-height: 1.8;
-      color: #674824;
-      font-weight: 300;
-    }
-
-    .arabic-soft, .arabic {
-      font-family: 'Noto Naskh Arabic', serif;
-      direction: rtl;
-    }
-
-    .arabic-soft {
-      color: #a57931;
-      font-size: clamp(18px, 2.3vw, 24px);
-      line-height: 2;
-      margin-top: 18px;
-    }
-
-    section {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 105px 24px;
-      position: relative;
-      overflow: hidden;
+    .section{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:105px 22px;
+      position:relative;
+      overflow:hidden;
       background:
-        radial-gradient(circle at 20% 12%, rgba(255,255,255,.95), transparent 34%),
-        linear-gradient(180deg, #fff9ef, #f4dfbf);
+        linear-gradient(135deg,rgba(255,250,242,.95),rgba(235,213,180,.92)),
+        url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=80') center/cover fixed;
     }
 
-    section:nth-of-type(even) {
+    .section.dark{
       background:
-        radial-gradient(circle at 80% 18%, rgba(255,255,255,.88), transparent 34%),
-        linear-gradient(180deg, #fff6e8, #efd0a1);
+        linear-gradient(135deg,rgba(35,24,16,.88),rgba(80,55,31,.82)),
+        url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1800&q=80') center/cover fixed;
+      color:#fff3df;
     }
 
-    section::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(183,138,54,.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(183,138,54,.05) 1px, transparent 1px);
-      background-size: 44px 44px;
-      opacity: .45;
+    .section::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 15% 20%,rgba(255,255,255,.38),transparent 25%),
+        radial-gradient(circle at 85% 70%,rgba(184,137,67,.22),transparent 28%);
+      pointer-events:none;
     }
 
-    section::after {
-      content: "✦";
-      position: absolute;
-      bottom: 38px;
-      color: rgba(183,138,54,.32);
-      font-size: 28px;
+    .panel{
+      width:min(920px,100%);
+      position:relative;
+      z-index:2;
+      text-align:center;
+      padding:clamp(34px,6vw,70px);
+      border-radius:34px;
+      background:rgba(255,250,242,.72);
+      border:1px solid rgba(184,137,67,.28);
+      box-shadow:0 30px 90px rgba(60,40,20,.18);
+      backdrop-filter:blur(16px);
+      opacity:0;
+      transform:translateY(70px) scale(.97);
+      filter:blur(12px);
+      transition:1.15s ease;
     }
 
-    .content {
-      max-width: 920px;
-      position: relative;
-      z-index: 2;
-      opacity: 0;
-      transform: translateY(75px) scale(.97);
-      filter: blur(10px);
-      transition: all 1.18s ease;
+    .dark .panel{
+      background:rgba(255,245,226,.08);
+      border-color:rgba(230,196,132,.22);
+      box-shadow:0 30px 100px rgba(0,0,0,.28);
     }
 
-    .content.show {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      filter: blur(0);
+    .panel.show{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+
+    .label{
+      color:var(--gold-dark);
+      letter-spacing:7px;
+      text-transform:uppercase;
+      font-size:12px;
+      margin-bottom:20px;
+      font-weight:600;
+    }
+    .dark .label{color:#e4c27f}
+
+    h2{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(46px,8vw,88px);
+      line-height:1;
+      font-weight:500;
+      color:#7b5529;
+      margin-bottom:24px;
+    }
+    .dark h2{color:#fff0d1}
+
+    .text{
+      font-size:clamp(18px,2.5vw,25px);
+      line-height:1.9;
+      font-weight:300;
+      color:#4a3521;
+      max-width:760px;
+      margin:0 auto;
+    }
+    .dark .text{color:rgba(255,244,220,.86)}
+
+    .arabic{
+      direction:rtl;
+      font-family:'Noto Naskh Arabic',serif;
+      color:#6d4a22;
+      font-size:clamp(18px,2.3vw,24px);
+      line-height:2.05;
+      margin-top:24px;
+    }
+    .dark .arabic{color:#e7c88c}
+
+    .date-row{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin-top:34px;
+    }
+    .date-card{
+      padding:24px 12px;
+      border-radius:24px;
+      background:rgba(255,255,255,.48);
+      border:1px solid rgba(184,137,67,.22);
+    }
+    .date-card strong{
+      font-family:'Playfair Display',serif;
+      display:block;
+      font-size:42px;
+      color:#7b5529;
+    }
+    .date-card small{
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:#a77736;
+      font-size:11px;
     }
 
-    .text {
-      font-size: clamp(19px, 2.5vw, 28px);
-      line-height: 1.9;
-      color: #5d4428;
-      font-weight: 300;
+    .btn{
+      display:inline-block;
+      margin-top:32px;
+      padding:15px 34px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#c99b4a,#805923);
+      color:#fff7e9;
+      text-decoration:none;
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:12px;
+      box-shadow:0 18px 45px rgba(128,89,35,.24);
+      transition:.35s ease;
+    }
+    .btn:hover{transform:translateY(-4px);box-shadow:0 25px 55px rgba(128,89,35,.32)}
+
+    .footer-note{
+      font-family:'Playfair Display',serif;
+      color:#8a642e;
+      font-size:clamp(28px,5vw,52px);
+      margin-top:20px;
     }
 
-    .arabic {
-      font-size: clamp(19px, 2.4vw, 27px);
-      line-height: 2.15;
-      color: #6b4b25;
-    }
-
-    .card {
-      margin: 34px auto 0;
-      padding: 30px 24px;
-      max-width: 760px;
-      border-radius: 30px;
-      background: rgba(255,255,255,.52);
-      border: 1px solid rgba(183,138,54,.22);
-      box-shadow: 0 20px 58px rgba(152,104,30,.12);
-      backdrop-filter: blur(8px);
-    }
-
-    .date-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 34px;
-    }
-
-    .date-box {
-      padding: 25px 12px;
-      border-radius: 25px;
-      background: rgba(255,255,255,.52);
-      border: 1px solid rgba(183,138,54,.2);
-      box-shadow: 0 16px 38px rgba(152,104,30,.09);
-    }
-
-    .date-box strong {
-      display: block;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 43px;
-      color: #8a6025;
-      font-weight: 500;
-    }
-
-    .date-box span {
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: #a57931;
-      font-size: 11px;
-    }
-
-    .map-btn {
-      display: inline-block;
-      margin-top: 34px;
-      padding: 15px 34px;
-      border-radius: 999px;
-      border: 1px solid rgba(183,138,54,.65);
-      background: linear-gradient(135deg, #cfa24b, #8c6428);
-      color: #fff8e8;
-      text-decoration: none;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      font-size: 12px;
-      box-shadow: 0 15px 35px rgba(147,100,30,.22);
-      transition: .35s ease;
-    }
-
-    .map-btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 24px 45px rgba(147,100,30,.28);
-    }
-
-    @media(max-width: 700px) {
-      .gate-cover { background-position: center center; }
-
-      .gate-cover::after {
-        bottom: 6%;
-        font-size: 10px;
-        letter-spacing: 3px;
-        padding: 12px 20px;
-      }
-
-      .date-grid { grid-template-columns: 1fr; }
-      .monogram { font-size: 150px; }
+    @media(max-width:700px){
+      .gate-cover{background-position:center center}
+      .section{background-attachment:scroll;padding:86px 18px}
+      .date-row{grid-template-columns:1fr}
+      .panel{border-radius:28px}
+      .kicker,.label{letter-spacing:5px}
     }
   </style>
 </head>
 <body>
 
 <audio id="music" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=romantic-piano-110843.mp3" type="audio/mpeg">
+  <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <header class="hero" id="hero">
   <div class="gate-cover" onclick="openInvite()"></div>
-
-  <div class="hero-content">
+  <div class="hero-inner">
     <div class="intro">
-      <div class="eyebrow">The Wedding Of</div>
-      <div class="monogram">
-        <span class="m">M</span>
-        <span class="l">L</span>
-      </div>
-      <h1>Mohammed & Laila</h1>
-      <p class="intro-note">A new chapter begins, and we would be honored to share it with you.</p>
-      <p class="arabic-soft">نُضيء بكم أولى صفحات حكايتنا</p>
+      <div class="kicker">The Wedding Of</div>
+      <div class="names">Mohammed <span>&</span> Laila</div>
+      <p class="hero-text">A beautiful beginning, a warm celebration, and a night made brighter by the people we love.</p>
+      <p class="arabic-line">نُضيء بكم أولى صفحات حكايتنا</p>
     </div>
   </div>
 </header>
 
-<section>
-  <div class="content">
-    <div class="label">You Are Invited</div>
-    <h2>With Love</h2>
-    <p class="text">
-      Together with our families, we invite you to celebrate a beautiful evening of love, joy, and unforgettable memories.
-    </p>
-    <div class="card">
-      <p class="arabic">
-        بقلوبٍ يغمرها السرور، يسعدنا أن تكونوا جزءًا من بداية حكايتنا، فبوجودكم تكتمل الفرحة وتزداد الذكرى جمالًا.
-      </p>
-    </div>
+<section class="section">
+  <div class="panel">
+    <div class="label">Invitation</div>
+    <h2>You Are Invited</h2>
+    <p class="text">Together with our families, we invite you to celebrate an evening of love, elegance, and unforgettable memories.</p>
+    <p class="arabic">بقلوبٍ يغمرها السرور، يسعدنا أن تكونوا جزءًا من بداية حكايتنا.</p>
   </div>
 </section>
 
-<section>
-  <div class="content">
+<section class="section dark">
+  <div class="panel">
     <div class="label">Wedding Date</div>
     <h2>12 August 2026</h2>
-    <p class="text">An elegant evening made brighter by the people we love.</p>
-
-    <div class="date-grid">
-      <div class="date-box">
-        <strong>12</strong>
-        <span>Day</span>
-      </div>
-      <div class="date-box">
-        <strong>Aug</strong>
-        <span>Month</span>
-      </div>
-      <div class="date-box">
-        <strong>2026</strong>
-        <span>Year</span>
-      </div>
+    <p class="text">An elegant evening made brighter by your presence.</p>
+    <div class="date-row">
+      <div class="date-card"><strong>12</strong><small>Day</small></div>
+      <div class="date-card"><strong>Aug</strong><small>Month</small></div>
+      <div class="date-card"><strong>2026</strong><small>Year</small></div>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="content">
-    <div class="label">Wedding Venue</div>
+<section class="section">
+  <div class="panel">
+    <div class="label">Venue</div>
     <h2>Nile Flori</h2>
     <p class="text">Maadi, Cairo</p>
-    <div class="card">
-      <p class="text">We look forward to welcoming you at Nile Flori Hall for our wedding celebration.</p>
-    </div>
-    <a class="map-btn" href="https://share.google/Fk8NmMYGkiMhrX2z9" target="_blank">Open Location</a>
+    <p class="arabic">ننتظركم في ليلةٍ نرجو أن تبقى ذكراها جميلة في قلوبنا جميعًا.</p>
+    <a class="btn" href="https://share.google/Fk8NmMYGkiMhrX2z9" target="_blank">Open Location</a>
   </div>
 </section>
 
-<section>
-  <div class="content">
-    <div class="label">A Message From Us</div>
-    <h2>Your Presence Matters</h2>
-    <p class="text">
-      We would love to celebrate this beautiful beginning with you.
-    </p>
-    <div class="card">
-      <p class="arabic">
-        يسعدنا أن تكونوا جزءًا من بداية حكايتنا.
-      </p>
-    </div>
+<section class="section dark">
+  <div class="panel">
+    <div class="label">From Our Hearts</div>
+    <h2>Celebrate With Us</h2>
+    <p class="text">We would love to share this beautiful beginning with you.</p>
+    <div class="footer-note">M & L</div>
   </div>
 </section>
 
 <script>
-  function openInvite() {
-    const hero = document.getElementById('hero');
-    hero.classList.add('opened');
-
-    const music = document.getElementById('music');
-    music.volume = 0.22;
-    music.play().catch(() => {});
+  function openInvite(){
+    document.getElementById('hero').classList.add('opened');
+    const music=document.getElementById('music');
+    music.volume=.18;
+    music.play().catch(()=>{});
   }
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
-      }
-    });
-  }, { threshold: 0.22 });
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){entry.target.classList.add('show')}
+    })
+  },{threshold:.22});
 
-  document.querySelectorAll('.content').forEach(el => observer.observe(el));
+  document.querySelectorAll('.panel').forEach(el=>observer.observe(el));
 </script>
 
 </body>
