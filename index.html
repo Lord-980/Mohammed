@@ -11,12 +11,10 @@
 
   <style>
     :root{
-      --cream:#f7efe3;
-      --champagne:#e9d5b5;
       --gold:#b88943;
       --gold-dark:#8a642e;
       --brown:#3b2a1d;
-      --soft:#fffaf2;
+      --cream:#fff6e8;
     }
 
     *{margin:0;padding:0;box-sizing:border-box}
@@ -39,7 +37,8 @@
     .gate-cover{
       position:absolute;
       inset:0;
-      background:url('gate.png') center/cover no-repeat;
+      background:url('gate.png') top center/auto 100% no-repeat;
+      background-color:#120d09;
       z-index:20;
       cursor:pointer;
       transition:opacity 1.25s ease, transform 1.6s ease, filter 1.25s ease;
@@ -292,7 +291,10 @@
     }
 
     @media(max-width:700px){
-      .gate-cover{background-position:center center}
+      .gate-cover{
+        background:url('gate.png') top center/auto 100% no-repeat;
+        background-color:#120d09;
+      }
       .section{background-attachment:scroll;padding:86px 18px}
       .date-row{grid-template-columns:1fr}
       .panel{border-radius:28px}
@@ -308,6 +310,7 @@
 
 <header class="hero" id="hero">
   <div class="gate-cover" onclick="openInvite()"></div>
+
   <div class="hero-inner">
     <div class="intro">
       <div class="kicker">The Wedding Of</div>
