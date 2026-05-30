@@ -7,281 +7,82 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Montserrat:wght@300;400;500;600&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
       --gold:#b88943;
-      --gold-dark:#8a642e;
-      --brown:#3b2a1d;
-      --cream:#fff6e8;
+      --gold2:#d6b16b;
+      --brown:#2f2118;
+      --mocha:#6f4f31;
+      --cream:#f7ead6;
+      --ivory:#fff8ed;
+      --glass:rgba(255,245,229,.58);
     }
 
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
+    body{font-family:'Montserrat',sans-serif;background:#120d09;color:var(--brown);overflow-x:hidden}
 
-    body{
-      font-family:'Montserrat',sans-serif;
-      background:#120d09;
-      color:var(--brown);
-      overflow-x:hidden;
-    }
+    .hero{min-height:100vh;position:relative;overflow:hidden;background:#120d09}
+    .gate-cover{position:absolute;inset:0;background:url('gate.png') center/cover no-repeat;background-color:#120d09;z-index:20;cursor:pointer;transition:opacity 1.25s ease,transform 1.6s ease,filter 1.25s ease}
+    .hero.opened .gate-cover{opacity:0;transform:scale(1.08);filter:blur(8px);pointer-events:none}
 
-    .hero{
-      min-height:100vh;
-      position:relative;
-      overflow:hidden;
-      background:#120d09;
-    }
-
-    .gate-cover{
-      position:absolute;
-      inset:0;
-      background:url('gate.png') top center/auto 100% no-repeat;
-      background-color:#120d09;
-      z-index:20;
-      cursor:pointer;
-      transition:opacity 1.25s ease, transform 1.6s ease, filter 1.25s ease;
-    }
-
-    /* Removed extra Tap to Enter button because the image already includes it */
-
-    .hero.opened .gate-cover{
-      opacity:0;
-      transform:scale(1.08);
-      filter:blur(8px);
-      pointer-events:none;
-    }
-
-    .hero-inner{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:40px 22px;
-      position:relative;
-      background:
-        linear-gradient(rgba(30,20,12,.38),rgba(30,20,12,.62)),
-        url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1800&q=80') center/cover;
-    }
-
-    .hero-inner::before{
-      content:'';
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at 50% 35%,rgba(255,237,197,.55),transparent 32%),
-        radial-gradient(circle at 50% 80%,rgba(184,137,67,.28),transparent 42%);
-    }
-
-    .intro{
-      position:relative;
-      z-index:2;
-      opacity:0;
-      transform:translateY(34px);
-      filter:blur(10px);
-      transition:1.25s ease .4s;
-      max-width:850px;
-    }
-
+    .hero-inner{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 22px;position:relative;background:linear-gradient(rgba(25,16,10,.42),rgba(25,16,10,.68)),url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1800&q=80') center/cover}
+    .hero-inner::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 34%,rgba(255,236,197,.48),transparent 31%),radial-gradient(circle at 50% 82%,rgba(184,137,67,.30),transparent 45%)}
+    .intro{position:relative;z-index:2;opacity:0;transform:translateY(34px);filter:blur(10px);transition:1.25s ease .4s;max-width:880px}
     .hero.opened .intro{opacity:1;transform:translateY(0);filter:blur(0)}
 
-    .kicker{
-      color:#d8b36d;
-      font-size:12px;
-      letter-spacing:7px;
-      text-transform:uppercase;
-      margin-bottom:24px;
-      font-weight:500;
-    }
+    .kicker,.label{color:#d8b36d;font-size:12px;letter-spacing:7px;text-transform:uppercase;margin-bottom:22px;font-weight:600}
+    .names{font-family:'Playfair Display',serif;font-size:clamp(62px,13vw,135px);font-weight:600;line-height:.9;color:#fff3d5;text-shadow:0 25px 80px rgba(0,0,0,.5);letter-spacing:-2px}
+    .names span{display:block;font-size:.72em;color:#d6ad62;font-weight:400;margin:8px 0}
+    .hero-text{max-width:650px;margin:28px auto 0;color:rgba(255,246,225,.88);font-size:clamp(17px,2.5vw,23px);line-height:1.9;font-weight:300}
+    .arabic-line,.arabic{font-family:'Noto Naskh Arabic',serif;direction:rtl}
+    .arabic-line{margin-top:16px;color:#e8c98b;font-size:clamp(18px,2.4vw,24px)}
 
-    .names{
-      font-family:'Playfair Display',serif;
-      font-size:clamp(62px,13vw,135px);
-      font-weight:500;
-      line-height:.9;
-      color:#fff3d5;
-      text-shadow:0 25px 80px rgba(0,0,0,.5);
-      letter-spacing:-2px;
-    }
+    .section{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:110px 22px;position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(196,154,98,.72),rgba(83,55,33,.74)),url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=80') center/cover fixed}
+    .section.alt{background:linear-gradient(135deg,rgba(39,26,18,.88),rgba(111,77,42,.82)),url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1800&q=80') center/cover fixed;color:#fff3df}
+    .section::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 14% 20%,rgba(255,241,213,.25),transparent 25%),radial-gradient(circle at 88% 76%,rgba(221,177,105,.22),transparent 28%);pointer-events:none}
+    .section::after{content:'';position:absolute;inset:28px;border:1px solid rgba(238,203,139,.22);border-radius:36px;pointer-events:none}
 
-    .names span{
-      display:block;
-      font-size:.72em;
-      color:#d6ad62;
-      font-weight:400;
-      margin:8px 0;
-    }
-
-    .hero-text{
-      max-width:620px;
-      margin:28px auto 0;
-      color:rgba(255,246,225,.88);
-      font-size:clamp(17px,2.5vw,23px);
-      line-height:1.9;
-      font-weight:300;
-    }
-
-    .arabic-line{
-      font-family:'Noto Naskh Arabic',serif;
-      direction:rtl;
-      margin-top:16px;
-      color:#e8c98b;
-      font-size:clamp(18px,2.4vw,24px);
-    }
-
-    .section{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:105px 22px;
-      position:relative;
-      overflow:hidden;
-      background:
-        linear-gradient(135deg,rgba(218,190,148,.88),rgba(154,115,65,.82)),
-        url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=80') center/cover fixed;
-    }
-
-    .section.dark{
-      background:
-        linear-gradient(135deg,rgba(76,51,31,.90),rgba(128,88,48,.84)),
-        url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1800&q=80') center/cover fixed;
-      color:#fff3df;
-    }
-
-    .section::before{
-      content:'';
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at 15% 20%,rgba(255,255,255,.38),transparent 25%),
-        radial-gradient(circle at 85% 70%,rgba(184,137,67,.22),transparent 28%);
-      pointer-events:none;
-    }
-
-    .panel{
-      width:min(920px,100%);
-      position:relative;
-      z-index:2;
-      text-align:center;
-      padding:clamp(34px,6vw,70px);
-      border-radius:34px;
-      background:rgba(255,238,210,.72);
-      border:1px solid rgba(184,137,67,.28);
-      box-shadow:0 30px 90px rgba(60,40,20,.26);
-      backdrop-filter:blur(16px);
-      opacity:0;
-      transform:translateY(70px) scale(.97);
-      filter:blur(12px);
-      transition:1.15s ease;
-    }
-
-    .dark .panel{
-      background:rgba(75,48,28,.38);
-      border-color:rgba(230,196,132,.22);
-      box-shadow:0 30px 100px rgba(0,0,0,.28);
-    }
-
+    .panel{width:min(980px,100%);position:relative;z-index:2;text-align:center;padding:clamp(42px,6vw,78px);border-radius:36px;background:linear-gradient(145deg,rgba(255,247,233,.74),rgba(238,211,171,.52));border:1px solid rgba(238,203,139,.34);box-shadow:0 36px 100px rgba(28,18,10,.34);backdrop-filter:blur(18px);opacity:0;transform:translateY(70px) scale(.97);filter:blur(12px);transition:1.15s ease}
+    .alt .panel{background:linear-gradient(145deg,rgba(255,244,223,.12),rgba(255,230,180,.06));border-color:rgba(238,203,139,.25);box-shadow:0 40px 110px rgba(0,0,0,.36)}
     .panel.show{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
 
-    .label{
-      color:var(--gold-dark);
-      letter-spacing:7px;
-      text-transform:uppercase;
-      font-size:12px;
-      margin-bottom:20px;
-      font-weight:600;
-    }
-    .dark .label{color:#e4c27f}
+    .ornament{width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--gold2),transparent);margin:0 auto 26px;position:relative}
+    .ornament::after{content:'✦';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:var(--gold);background:rgba(255,245,229,.75);padding:0 10px}
+    .alt .ornament::after{background:rgba(60,38,22,.7)}
 
-    h2{
-      font-family:'Playfair Display',serif;
-      font-size:clamp(46px,8vw,88px);
-      line-height:1;
-      font-weight:500;
-      color:#7b5529;
-      margin-bottom:24px;
-    }
-    .dark h2{color:#fff0d1}
+    h2{font-family:'Playfair Display',serif;font-size:clamp(48px,8vw,92px);line-height:1;font-weight:600;color:#704c25;margin-bottom:24px;letter-spacing:-1px}
+    .alt h2{color:#fff0d1}
+    .text{font-size:clamp(18px,2.5vw,25px);line-height:1.9;font-weight:300;color:#3d2a1a;max-width:780px;margin:0 auto}
+    .alt .text{color:rgba(255,244,220,.86)}
+    .arabic{color:#664620;font-size:clamp(18px,2.3vw,24px);line-height:2.05;margin-top:24px}
+    .alt .arabic{color:#e7c88c}
 
-    .text{
-      font-size:clamp(18px,2.5vw,25px);
-      line-height:1.9;
-      font-weight:300;
-      color:#4a3521;
-      max-width:760px;
-      margin:0 auto;
-    }
-    .dark .text{color:rgba(255,244,220,.86)}
+    .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:38px auto 0;max-width:820px}
+    .timebox{padding:26px 12px;border-radius:26px;background:rgba(255,244,226,.64);border:1px solid rgba(133,91,38,.28);box-shadow:0 18px 45px rgba(55,34,14,.18)}
+    .alt .timebox{background:rgba(255,244,226,.12);border-color:rgba(230,196,132,.20)}
+    .timebox strong{display:block;font-family:'Playfair Display',serif;font-size:clamp(34px,6vw,58px);color:#704c25;line-height:1}
+    .alt .timebox strong{color:#ffe8b8}
+    .timebox span{text-transform:uppercase;letter-spacing:4px;color:#9d7135;font-size:11px;margin-top:10px;display:block}
+    .alt .timebox span{color:#e4c27f}
 
-    .arabic{
-      direction:rtl;
-      font-family:'Noto Naskh Arabic',serif;
-      color:#6d4a22;
-      font-size:clamp(18px,2.3vw,24px);
-      line-height:2.05;
-      margin-top:24px;
-    }
-    .dark .arabic{color:#e7c88c}
+    .venue-card{margin:34px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:820px;text-align:left}
+    .detail{padding:28px;border-radius:28px;background:rgba(255,244,226,.56);border:1px solid rgba(133,91,38,.22);box-shadow:0 18px 50px rgba(55,34,14,.14)}
+    .detail small{display:block;color:#9d7135;letter-spacing:4px;text-transform:uppercase;font-size:11px;margin-bottom:10px}
+    .detail strong{font-family:'Playfair Display',serif;font-size:34px;color:#704c25;font-weight:600}
+    .btn{display:inline-block;margin-top:34px;padding:15px 34px;border-radius:999px;background:linear-gradient(135deg,#c99b4a,#805923);color:#fff7e9;text-decoration:none;text-transform:uppercase;letter-spacing:3px;font-size:12px;box-shadow:0 18px 45px rgba(128,89,35,.28);transition:.35s ease}
+    .btn:hover{transform:translateY(-4px);box-shadow:0 25px 55px rgba(128,89,35,.35)}
 
-    .date-row{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
-      margin-top:34px;
-    }
-    .date-card{
-      padding:24px 12px;
-      border-radius:24px;
-      background:rgba(255,238,210,.68);
-      border:1px solid rgba(125,86,38,.30);
-      box-shadow:0 18px 45px rgba(55,34,14,.18);
-    }
-    .date-card strong{
-      font-family:'Playfair Display',serif;
-      display:block;
-      font-size:42px;
-      color:#7b5529;
-    }
-    .date-card small{
-      text-transform:uppercase;
-      letter-spacing:4px;
-      color:#a77736;
-      font-size:11px;
-    }
-
-    .btn{
-      display:inline-block;
-      margin-top:32px;
-      padding:15px 34px;
-      border-radius:999px;
-      background:linear-gradient(135deg,#c99b4a,#805923);
-      color:#fff7e9;
-      text-decoration:none;
-      text-transform:uppercase;
-      letter-spacing:3px;
-      font-size:12px;
-      box-shadow:0 18px 45px rgba(128,89,35,.24);
-      transition:.35s ease;
-    }
-    .btn:hover{transform:translateY(-4px);box-shadow:0 25px 55px rgba(128,89,35,.32)}
-
-    .footer-note{
-      font-family:'Playfair Display',serif;
-      color:#8a642e;
-      font-size:clamp(28px,5vw,52px);
-      margin-top:20px;
-    }
+    .signature{font-family:'Playfair Display',serif;color:#ffe8b8;font-size:clamp(44px,9vw,92px);margin-top:26px;letter-spacing:-2px}
 
     @media(max-width:700px){
-      .gate-cover{
-        background:url('gate.png') top center/auto 100% no-repeat;
-        background-color:#120d09;
-      }
-      .section{background-attachment:scroll;padding:86px 18px}
-      .date-row{grid-template-columns:1fr}
+      .gate-cover{background-position:center;background-size:cover}
+      .section{background-attachment:scroll;padding:90px 18px}
+      .section::after{inset:14px;border-radius:24px}
+      .countdown{grid-template-columns:repeat(2,1fr)}
+      .venue-card{grid-template-columns:1fr;text-align:center}
       .panel{border-radius:28px}
       .kicker,.label{letter-spacing:5px}
     }
@@ -295,7 +96,6 @@
 
 <header class="hero" id="hero">
   <div class="gate-cover" onclick="openInvite()"></div>
-
   <div class="hero-inner">
     <div class="intro">
       <div class="kicker">The Wedding Of</div>
@@ -309,41 +109,58 @@
 <section class="section">
   <div class="panel">
     <div class="label">Invitation</div>
+    <div class="ornament"></div>
     <h2>You Are Invited</h2>
     <p class="text">Together with our families, we invite you to celebrate an evening of love, elegance, and unforgettable memories.</p>
     <p class="arabic">بقلوبٍ يغمرها السرور، يسعدنا أن تكونوا جزءًا من بداية حكايتنا.</p>
   </div>
 </section>
 
-<section class="section dark">
+<section class="section alt">
   <div class="panel">
-    <div class="label">Wedding Date</div>
-    <h2>12 August 2026</h2>
-    <p class="text">An elegant evening made brighter by your presence.</p>
-    <div class="date-row">
-      <div class="date-card"><strong>12</strong><small>Day</small></div>
-      <div class="date-card"><strong>Aug</strong><small>Month</small></div>
-      <div class="date-card"><strong>2026</strong><small>Year</small></div>
+    <div class="label">Countdown</div>
+    <div class="ornament"></div>
+    <h2>Until We Say I Do</h2>
+    <p class="text">Counting down to a night we will remember forever.</p>
+    <div class="countdown">
+      <div class="timebox"><strong id="days">00</strong><span>Days</span></div>
+      <div class="timebox"><strong id="hours">00</strong><span>Hours</span></div>
+      <div class="timebox"><strong id="minutes">00</strong><span>Minutes</span></div>
+      <div class="timebox"><strong id="seconds">00</strong><span>Seconds</span></div>
     </div>
   </div>
 </section>
 
 <section class="section">
   <div class="panel">
+    <div class="label">Wedding Date</div>
+    <div class="ornament"></div>
+    <h2>12 August 2026</h2>
+    <p class="text">An elegant evening made brighter by your presence.</p>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="panel">
     <div class="label">Venue</div>
+    <div class="ornament"></div>
     <h2>Nile Flori</h2>
-    <p class="text">Maadi, Cairo</p>
+    <div class="venue-card">
+      <div class="detail"><small>Location</small><strong>Maadi, Cairo</strong></div>
+      <div class="detail"><small>Celebration</small><strong>Wedding Night</strong></div>
+    </div>
     <p class="arabic">ننتظركم في ليلةٍ نرجو أن تبقى ذكراها جميلة في قلوبنا جميعًا.</p>
     <a class="btn" href="https://share.google/Fk8NmMYGkiMhrX2z9" target="_blank">Open Location</a>
   </div>
 </section>
 
-<section class="section dark">
+<section class="section alt">
   <div class="panel">
     <div class="label">From Our Hearts</div>
+    <div class="ornament"></div>
     <h2>Celebrate With Us</h2>
     <p class="text">We would love to share this beautiful beginning with you.</p>
-    <div class="footer-note">M & L</div>
+    <div class="signature">M & L</div>
   </div>
 </section>
 
@@ -354,6 +171,34 @@
     music.volume=.18;
     music.play().catch(()=>{});
   }
+
+  const weddingDate = new Date('2026-08-12T20:00:00').getTime();
+
+  function updateCountdown(){
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+
+    if(distance <= 0){
+      document.getElementById('days').textContent='00';
+      document.getElementById('hours').textContent='00';
+      document.getElementById('minutes').textContent='00';
+      document.getElementById('seconds').textContent='00';
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById('days').textContent = String(days).padStart(2,'0');
+    document.getElementById('hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('minutes').textContent = String(minutes).padStart(2,'0');
+    document.getElementById('seconds').textContent = String(seconds).padStart(2,'0');
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
 
   const observer=new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
