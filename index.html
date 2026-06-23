@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mohammed & Laila Wedding</title>
+  <title>Ahmed & Basant Wedding</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,18 +11,17 @@
 
   <style>
     :root{
-      --rose:#cfa6a0;
-      --rose-deep:#9f6f6b;
-      --blue:#9fb6c9;
-      --blue-deep:#627f96;
-      --cream:#fff7ef;
       --gold:#b89455;
-      --text:#3f3a36;
+      --deep-gold:#8f6428;
+      --rose:#d7aaa6;
+      --cream:#fff7ef;
+      --text:#4a3521;
+      --dark:#2f241d;
     }
 
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{font-family:'Montserrat',sans-serif;background:#f4e9e5;color:var(--text);overflow-x:hidden}
+    body{font-family:'Montserrat',sans-serif;background:#f6ece6;color:var(--text);overflow-x:hidden}
 
     .hero{min-height:100vh;position:relative;overflow:hidden;background:#120d09}
 
@@ -33,7 +32,7 @@
       background-color:#120d09;
       z-index:20;
       cursor:pointer;
-      transition:opacity 1.25s ease,transform 1.6s ease,filter 1.25s ease;
+      transition:opacity 1.3s ease,transform 1.6s ease,filter 1.3s ease;
     }
 
     .hero.opened .gate-cover{
@@ -52,7 +51,7 @@
       padding:40px 22px;
       position:relative;
       background:
-        linear-gradient(135deg,rgba(207,166,160,.72),rgba(159,182,201,.62)),
+        linear-gradient(135deg,rgba(215,170,166,.72),rgba(230,202,165,.65)),
         url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1800&q=80') center/cover;
     }
 
@@ -61,8 +60,8 @@
       position:absolute;
       inset:0;
       background:
-        radial-gradient(circle at 50% 34%,rgba(255,250,245,.72),transparent 32%),
-        radial-gradient(circle at 50% 82%,rgba(184,148,85,.18),transparent 45%);
+        radial-gradient(circle at 50% 34%,rgba(255,250,245,.75),transparent 34%),
+        linear-gradient(rgba(255,255,255,.05),rgba(80,45,25,.18));
     }
 
     .intro{
@@ -75,11 +74,7 @@
       max-width:880px;
     }
 
-    .hero.opened .intro{
-      opacity:1;
-      transform:translateY(0);
-      filter:blur(0);
-    }
+    .hero.opened .intro{opacity:1;transform:translateY(0);filter:blur(0)}
 
     .kicker,.label{
       color:#a8793b;
@@ -97,9 +92,7 @@
       line-height:.9;
       color:#8f6428;
       letter-spacing:-2px;
-      text-shadow:
-        0 2px 4px rgba(255,255,255,.45),
-        0 10px 28px rgba(143,100,40,.28);
+      text-shadow:0 2px 4px rgba(255,255,255,.45),0 10px 28px rgba(143,100,40,.28);
     }
 
     .names span{
@@ -108,9 +101,6 @@
       color:#c79b63;
       font-weight:700;
       margin:8px 0;
-      text-shadow:
-        0 2px 4px rgba(255,255,255,.35),
-        0 8px 18px rgba(0,0,0,.12);
     }
 
     .hero-text{
@@ -120,7 +110,6 @@
       font-size:clamp(17px,2.5vw,23px);
       line-height:1.9;
       font-weight:500;
-      text-shadow:0 2px 10px rgba(255,255,255,.45);
     }
 
     .arabic-line,.arabic{
@@ -133,7 +122,6 @@
       color:#6a4a28;
       font-size:clamp(18px,2.4vw,24px);
       font-weight:600;
-      text-shadow:0 2px 10px rgba(255,255,255,.45);
     }
 
     .section{
@@ -145,34 +133,15 @@
       position:relative;
       overflow:hidden;
       background:
-        linear-gradient(135deg,rgba(207,166,160,.78),rgba(159,182,201,.72)),
+        linear-gradient(135deg,rgba(215,170,166,.78),rgba(232,207,169,.72)),
         url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1800&q=80') center/cover fixed;
     }
 
     .section.alt{
       background:
-        linear-gradient(135deg,rgba(80,92,104,.76),rgba(159,120,116,.70)),
+        linear-gradient(135deg,rgba(64,45,34,.80),rgba(157,111,93,.72)),
         url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1800&q=80') center/cover fixed;
       color:#fffaf5;
-    }
-
-    .section::before{
-      content:'';
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at 14% 20%,rgba(255,250,245,.38),transparent 26%),
-        radial-gradient(circle at 88% 76%,rgba(184,148,85,.18),transparent 30%);
-      pointer-events:none;
-    }
-
-    .section::after{
-      content:'';
-      position:absolute;
-      inset:28px;
-      border:1px solid rgba(255,250,245,.26);
-      border-radius:36px;
-      pointer-events:none;
     }
 
     .panel{
@@ -182,8 +151,8 @@
       text-align:center;
       padding:clamp(42px,6vw,78px);
       border-radius:36px;
-      background:linear-gradient(145deg,rgba(255,250,245,.72),rgba(242,218,211,.48));
-      border:1px solid rgba(255,250,245,.42);
+      background:linear-gradient(145deg,rgba(255,250,245,.74),rgba(246,223,214,.52));
+      border:1px solid rgba(255,250,245,.45);
       box-shadow:0 36px 100px rgba(63,58,54,.22);
       backdrop-filter:blur(18px);
       opacity:0;
@@ -195,14 +164,9 @@
     .alt .panel{
       background:linear-gradient(145deg,rgba(255,250,245,.16),rgba(255,250,245,.08));
       border-color:rgba(255,250,245,.28);
-      box-shadow:0 40px 110px rgba(45,42,40,.30);
     }
 
-    .panel.show{
-      opacity:1;
-      transform:translateY(0) scale(1);
-      filter:blur(0);
-    }
+    .panel.show{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
 
     .ornament{
       width:120px;
@@ -223,19 +187,13 @@
       padding:0 10px;
     }
 
-    .alt .ornament::after{
-      background:rgba(95,92,104,.55);
-      color:#f4d8c8;
-    }
-
     h2{
       font-family:'Playfair Display',serif;
       font-size:clamp(48px,8vw,92px);
       line-height:1;
       font-weight:600;
-      color:#6d5550;
+      color:#7a5528;
       margin-bottom:24px;
-      letter-spacing:-1px;
     }
 
     .alt h2{color:#fffaf5}
@@ -252,7 +210,7 @@
     .alt .text{color:rgba(255,250,245,.88)}
 
     .arabic{
-      color:#6d5550;
+      color:#6d4a25;
       font-size:clamp(18px,2.3vw,24px);
       line-height:2.05;
       margin-top:24px;
@@ -276,31 +234,22 @@
       box-shadow:0 18px 45px rgba(63,58,54,.14);
     }
 
-    .alt .timebox{
-      background:rgba(255,250,245,.13);
-      border-color:rgba(255,250,245,.22);
-    }
-
     .timebox strong{
       display:block;
       font-family:'Playfair Display',serif;
       font-size:clamp(34px,6vw,58px);
-      color:#6d5550;
+      color:#8f6428;
       line-height:1;
     }
-
-    .alt .timebox strong{color:#fffaf5}
 
     .timebox span{
       text-transform:uppercase;
       letter-spacing:4px;
-      color:var(--rose-deep);
+      color:#9f6f6b;
       font-size:11px;
       margin-top:10px;
       display:block;
     }
-
-    .alt .timebox span{color:#f4d8c8}
 
     .venue-card{
       margin:34px auto 0;
@@ -316,12 +265,11 @@
       border-radius:28px;
       background:rgba(255,250,245,.54);
       border:1px solid rgba(255,250,245,.35);
-      box-shadow:0 18px 50px rgba(63,58,54,.13);
     }
 
     .detail small{
       display:block;
-      color:var(--rose-deep);
+      color:#9f6f6b;
       letter-spacing:4px;
       text-transform:uppercase;
       font-size:11px;
@@ -331,20 +279,16 @@
     .detail strong{
       font-family:'Playfair Display',serif;
       font-size:34px;
-      color:#6d5550;
+      color:#7a5528;
       font-weight:600;
     }
-
-    .alt .detail{background:rgba(255,250,245,.12)}
-    .alt .detail strong{color:#fffaf5}
-    .alt .detail small{color:#f4d8c8}
 
     .btn{
       display:inline-block;
       margin-top:34px;
       padding:15px 34px;
       border-radius:999px;
-      background:linear-gradient(135deg,var(--rose-deep),var(--blue-deep));
+      background:linear-gradient(135deg,#b89455,#8f6428);
       color:#fffaf5;
       text-decoration:none;
       text-transform:uppercase;
@@ -354,23 +298,18 @@
       transition:.35s ease;
     }
 
-    .btn:hover{
-      transform:translateY(-4px);
-      box-shadow:0 25px 55px rgba(63,58,54,.30);
-    }
+    .btn:hover{transform:translateY(-4px)}
 
     .signature{
       font-family:'Playfair Display',serif;
       color:#fffaf5;
       font-size:clamp(44px,9vw,92px);
       margin-top:26px;
-      letter-spacing:-2px;
     }
 
     @media(max-width:700px){
       .gate-cover{background-position:center;background-size:cover}
       .section{background-attachment:scroll;padding:90px 18px}
-      .section::after{inset:14px;border-radius:24px}
       .countdown{grid-template-columns:repeat(2,1fr)}
       .venue-card{grid-template-columns:1fr;text-align:center}
       .panel{border-radius:28px}
@@ -378,6 +317,7 @@
     }
   </style>
 </head>
+
 <body>
 
 <audio id="music" loop>
@@ -390,9 +330,9 @@
   <div class="hero-inner">
     <div class="intro">
       <div class="kicker">The Wedding Of</div>
-      <div class="names">Mohammed <span>&</span> Laila</div>
+      <div class="names">Ahmed <span>&</span> Basant</div>
       <p class="hero-text">A beautiful beginning, a warm celebration, and a night made brighter by the people we love.</p>
-      <p class="arabic-line">نُضيء بكم أولى صفحات حكايتنا</p>
+      <p class="arabic-line">يسعدنا أن تكونوا جزءًا من بداية حكايتنا</p>
     </div>
   </div>
 </header>
@@ -403,7 +343,7 @@
     <div class="ornament"></div>
     <h2>You Are Invited</h2>
     <p class="text">Together with our families, we invite you to celebrate an evening of love, elegance, and unforgettable memories.</p>
-    <p class="arabic">بقلوبٍ يغمرها السرور، يسعدنا أن تكونوا جزءًا من بداية حكايتنا.</p>
+    <p class="arabic">بقلوبٍ يغمرها السرور، يسعدنا حضوركم ومشاركتكم فرحتنا في هذه الليلة المميزة.</p>
   </div>
 </section>
 
@@ -427,8 +367,8 @@
   <div class="panel">
     <div class="label">Wedding Date</div>
     <div class="ornament"></div>
-    <h2>12 August 2026</h2>
-    <p class="text">An elegant evening made brighter by your presence.</p>
+    <h2>28 July 2026</h2>
+    <p class="text">The celebration begins at 7:00 PM.</p>
   </div>
 </section>
 
@@ -436,12 +376,12 @@
   <div class="panel">
     <div class="label">Venue</div>
     <div class="ornament"></div>
-    <h2>Nile Flori</h2>
+    <h2>Wedding Venue</h2>
 
     <div class="venue-card">
       <div class="detail">
-        <small>Location</small>
-        <strong>Maadi, Cairo</strong>
+        <small>Time</small>
+        <strong>7:00 PM</strong>
       </div>
 
       <div class="detail">
@@ -451,7 +391,7 @@
     </div>
 
     <p class="arabic">ننتظركم في ليلةٍ نرجو أن تبقى ذكراها جميلة في قلوبنا جميعًا.</p>
-    <a class="btn" href="https://share.google/Fk8NmMYGkiMhrX2z9" target="_blank">Open Location</a>
+    <a class="btn" href="https://share.google/Vg7m8ODKtcburS1um" target="_blank">Open Location</a>
   </div>
 </section>
 
@@ -461,7 +401,7 @@
     <div class="ornament"></div>
     <h2>Celebrate With Us</h2>
     <p class="text">We would love to share this beautiful beginning with you.</p>
-    <div class="signature">M & L</div>
+    <div class="signature">A & B</div>
   </div>
 </section>
 
@@ -474,7 +414,7 @@
     music.play().catch(()=>{});
   }
 
-  const weddingDate = new Date('2026-08-12T20:00:00').getTime();
+  const weddingDate = new Date('2026-07-28T19:00:00').getTime();
 
   function updateCountdown(){
     const now = new Date().getTime();
